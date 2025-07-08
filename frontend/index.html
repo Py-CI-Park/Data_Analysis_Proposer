@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 분석 모델 추천 시스템</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <i class="fas fa-brain"></i>
+                AI 모델 추천 시스템
+            </h1>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">홈</a>
+                <a href="#steps" class="nav-link">분석 단계</a>
+                <a href="#models" class="nav-link">모델 탐색</a>
+                <a href="#recommend" class="nav-link">추천받기</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 컨테이너 -->
+    <main class="main">
+        <!-- 홈 섹션 -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h2 class="hero-title">데이터 분석의 모든 과정을 안내합니다</h2>
+                    <p class="hero-subtitle">
+                        머신러닝, 딥러닝, 강화학습까지<br>
+                        당신의 프로젝트에 최적화된 모델을 추천받으세요
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showSection('recommend')">
+                            <i class="fas fa-rocket"></i>
+                            지금 시작하기
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('steps')">
+                            <i class="fas fa-info-circle"></i>
+                            분석 과정 알아보기
+                        </button>
+                    </div>
+                </div>
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>단계별 가이드</h3>
+                        <p>데이터 수집부터 결과 해석까지 8단계 체계적 분석 프로세스</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI 모델 추천</h3>
+                        <p>프로젝트 특성에 맞는 최적의 ML/DL/RL 모델 자동 추천</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>구현 가이드</h3>
+                        <p>모델별 상세한 구현 방법과 코드 예제 제공</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 분석 단계 섹션 -->
+        <section id="steps" class="section">
+            <div class="container">
+                <h2 class="section-title">데이터 분석 8단계</h2>
+                <div class="steps-container">
+                    <div id="stepsTimeline" class="steps-timeline">
+                        <!-- 단계들이 동적으로 추가됩니다 -->
+                    </div>
+                    <div class="step-details">
+                        <div id="stepDetails" class="step-detail-card">
+                            <h3>단계를 선택하세요</h3>
+                            <p>좌측에서 분석 단계를 클릭하면 상세 정보를 확인할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 모델 탐색 섹션 -->
+        <section id="models" class="section">
+            <div class="container">
+                <h2 class="section-title">AI 모델 탐색</h2>
+                <div class="models-filter">
+                    <div class="filter-group">
+                        <label for="categoryFilter">카테고리:</label>
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">모든 카테고리</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="typeFilter">모델 타입:</label>
+                        <select id="typeFilter" class="filter-select">
+                            <option value="">모든 타입</option>
+                            <option value="ML">머신러닝</option>
+                            <option value="DL">딥러닝</option>
+                            <option value="RL">강화학습</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="complexityFilter">복잡도:</label>
+                        <select id="complexityFilter" class="filter-select">
+                            <option value="">모든 수준</option>
+                            <option value="Beginner">초급</option>
+                            <option value="Intermediate">중급</option>
+                            <option value="Advanced">고급</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="modelsGrid" class="models-grid">
+                    <!-- 모델 카드들이 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 모델 추천 섹션 -->
+        <section id="recommend" class="section">
+            <div class="container">
+                <h2 class="section-title">맞춤형 모델 추천</h2>
+                <div class="recommend-form">
+                    <form id="recommendForm" class="form">
+                        <div class="form-group">
+                            <label for="projectName">프로젝트 이름</label>
+                            <input type="text" id="projectName" name="project_name" required
+                                   placeholder="예: 고객 이탈 예측 모델">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dataType">데이터 타입</label>
+                                <select id="dataType" name="data_type" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="numerical">수치형 데이터</option>
+                                    <option value="text">텍스트 데이터</option>
+                                    <option value="image">이미지 데이터</option>
+                                    <option value="mixed">혼합 데이터</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="problemType">문제 유형</label>
+                                <select id="problemType" name="problem_type" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="classification">분류 (Classification)</option>
+                                    <option value="regression">회귀 (Regression)</option>
+                                    <option value="clustering">클러스터링 (Clustering)</option>
+                                    <option value="time_series">시계열 분석</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="datasetSize">데이터셋 크기</label>
+                                <select id="datasetSize" name="dataset_size" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="small">소규모 (< 10,000 행)</option>
+                                    <option value="medium">중간 (10,000 - 100,000 행)</option>
+                                    <option value="large">대규모 (> 100,000 행)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="complexityPreference">선호 복잡도</label>
+                                <select id="complexityPreference" name="complexity_preference">
+                                    <option value="Beginner">초급 (빠른 구현)</option>
+                                    <option value="Intermediate" selected>중급 (균형)</option>
+                                    <option value="Advanced">고급 (최고 성능)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-magic"></i>
+                            모델 추천받기
+                        </button>
+                    </form>
+                </div>
+                
+                <div id="recommendResults" class="recommend-results hidden">
+                    <h3>추천 결과</h3>
+                    <div id="recommendedModels" class="recommended-models">
+                        <!-- 추천 모델들이 동적으로 추가됩니다 -->
+                    </div>
+                    <div class="results-actions">
+                        <button class="btn btn-secondary" onclick="generateReport()">
+                            <i class="fas fa-file-alt"></i>
+                            분석 리포트 생성
+                        </button>
+                        <button class="btn btn-success" onclick="saveProject()">
+                            <i class="fas fa-save"></i>
+                            프로젝트 저장
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 모달들 -->
+    <!-- 모델 상세 정보 모달 -->
+    <div id="modelModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalModelName">모델 이름</h3>
+                <span class="close" onclick="closeModal('modelModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="modalModelContent">
+                    <!-- 모델 상세 정보가 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 리포트 모달 -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>분석 리포트</h3>
+                <span class="close" onclick="closeModal('reportModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="reportContent">
+                    <!-- 리포트 내용이 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 로딩 인디케이터 -->
+    <div id="loader" class="loader hidden">
+        <div class="spinner"></div>
+        <p>처리 중...</p>
+    </div>
+
+    <!-- 알림 메시지 -->
+    <div id="notification" class="notification hidden">
+        <div class="notification-content">
+            <span id="notificationMessage"></span>
+            <span class="notification-close" onclick="hideNotification()">&times;</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
